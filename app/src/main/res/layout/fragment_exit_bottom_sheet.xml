@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="ltr"
+    android:background="@drawable/bg_rounded_top_corners"
+    tools:context=".BottomSheet.ExitBottomSheet">
+
+
+    <ImageView
+        android:id="@+id/profile_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/profile_demo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/_20sdp" />
+
+    <TextView
+        android:id="@+id/userNameId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:text="@string/unknown"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintBottom_toTopOf="@+id/phoneId"
+        app:layout_constraintStart_toEndOf="@+id/profile_iv"
+        app:layout_constraintTop_toTopOf="@id/profile_iv" />
+
+    <TextView
+        android:id="@+id/phoneId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_number"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_iv"
+        app:layout_constraintStart_toStartOf="@+id/userNameId"
+        app:layout_constraintTop_toBottomOf="@+id/userNameId" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/profile_iv"
+        android:text="@string/manage_your_profile"
+        android:id="@+id/manageProfile_id"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/profile_iv"
+        android:layout_marginTop="@dimen/_15sdp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/manageProfile_id"
+        android:text="@string/sos_settings"
+        android:id="@+id/sosSettings_id"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/manageProfile_id"
+        android:layout_marginTop="@dimen/_15sdp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/sosSettings_id"
+        app:layout_constraintStart_toStartOf="@+id/sosSettings_id"
+        android:text="@string/pin_settings"
+        android:id="@+id/pinSettings_id"
+        android:textColor="@color/white"
+
+        android:layout_marginTop="@dimen/_15sdp" />
+
+    <ImageView
+        android:id="@+id/logout_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logout_img"
+        app:layout_constraintTop_toBottomOf="@+id/pinSettings_id"
+        app:layout_constraintStart_toStartOf="@+id/pinSettings_id"
+        android:layout_marginTop="@dimen/_25sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/_30sdp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,144 @@
+<resources>
+    <string name="app_name">SOS</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="are_your_in_emergency">Are your in emergency ?</string>
+    <string name="press_the_sos_button_below_and_help_will_reach_you_shortly">Press the SOS button below and help will \n reach you shortly</string>
+    <string name="safety_tips">Safety Tips</string>
+    <string name="harassments_of_workplace">Harassments of Workplace</string>
+    <string name="harassments_of_workplace_act_1997_summary">Harassments of workplace act (1997) Summary</string>
+    <string name="rules_of_ombudsperson">Rules of Ombudsperson</string>
+    <string name="the_protection_against_harassment_of_women_at_workplace_act_2013_summary">The protection against harassment of women at workplace act (2013) Summary</string>
+    <string name="manage_your_profile">Manage Your Profile</string>
+    <string name="sos_activated">SOS Activated</string>
+    <string name="your_emergency_contacts_and_nearby_police_station_will_receive_your_information_and_location">Your emergency contacts and nearby police station will receive your information and location</string>
+    <string name="i_am_safe">I am safe</string>
+
+    <string name="navigation_drawer_open">open_drawer</string>
+    <string name="navigation_drawer_close">close_drawer</string>
+
+    <string name="sosAlert">SOS Alert is\nSuccessfully sent to\nyour <font color="#AE0431">Emergency\nContacts</font></string>
+
+    <string name="bulleted_text"><![CDATA[
+• Find contacts on your device\n
+• Manage and access your contacts
+]]></string>
+
+    <string name="bulleted_text_location"><![CDATA[
+• Access your precise and approximate location
+]]></string>
+
+    <string name="bulleted_text_overlay"><![CDATA[
+• Access app to show content over other apps
+]]></string>
+    <string name="create_complain">Create Complain</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="enter_name_here">Enter Name here..</string>
+    <string name="enter_email_here">Enter Email here...</string>
+    <string name="address">Address</string>
+    <string name="enter_address_here">Enter Address here...</string>
+    <string name="complaint">Complaint</string>
+    <string name="create">Create</string>
+    <string name="pin_settings_header">PIN Settings</string>
+    <string name="view_complain">View Complain</string>
+    <string name="search">Search</string>
+    <string name="location">Location</string>
+    <string name="enter_admin_name_hint">Enter Admin Name</string>
+    <string name="enter_admin_pass_hint">Enter Admin Password</string>
+    <string name="sheguard">SHEGUARD</string>
+    <string name="registerPolice">Register Police</string>
+    <string name="manage_police_details">Manage Police Details</string>
+    <string name="status">Status</string>
+    <string name="app_permissions">App Permissions</string>
+    <string name="need_access_for_the_following_for_your_safety">Need access for the following for your safety</string>
+    <string name="overlay">Overlay</string>
+    <string name="contacts">Contacts</string>
+    <string name="allow">Allow</string>
+    <string name="deny">Deny</string>
+    <string name="add_police">Add Police</string>
+    <string name="enter_name_hint">Enter Name</string>
+    <string name="enter_password_hint">Enter Password</string>
+    <string name="enter_address_hint">Enter Address</string>
+    <string name="enter_email_hint">Enter Email</string>
+    <string name="enter_rank_hint">Enter Rank of Police</string>
+    <string name="submit">Submit</string>
+    <string name="login_to_your_account">Login to Your Account</string>
+    <string name="add">Add</string>
+    <string name="added_successfully">Added Successfully</string>
+    <string name="edit_police">Edit Police</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="password">Password</string>
+    <string name="rank">Rank</string>
+    <string name="date">Date</string>
+    <string name="open">Open</string>
+    <string name="accessibility">Accessibility</string>
+    <string name="english">English (US)</string>
+    <string name="urdu">Urdu</string>
+    <string name="awareness_document">Awareness Document</string>
+    <string name="unknown">Unknown</string>
+    <string name="incoming_call">Incoming Call</string>
+    <string name="alarm_clock">Alarm/Clock</string>
+    <string name="message">Message</string>
+    <string name="reject">Reject</string>
+    <string name="accept">Accept</string>
+    <string name="enter">Enter</string>
+    <string name="enter_pin_to_cancel_sos">Enter PIN to cancel SOS</string>
+    <string name="cancel_sos">Cancel SOS</string>
+    <string name="update_your_pin_to_cancel_sos_during_false_alarm">Update your PIN to cancel SOS during false alarm</string>
+    <string name="enter_present_pin">Enter present PIN*</string>
+    <string name="enter_new_pin">Enter new PIN*</string>
+    <string name="confirm_new_pin">Confirm new PIN*</string>
+    <string name="confirm_pin_hint">Confirm Pin</string>
+    <string name="new_pin_hint">New Pin</string>
+    <string name="present_pin_hint">Present Pin</string>
+    <string name="emergency_contacts">Emergency Contacts</string>
+    <string name="enter_to_contacts_incase_of_emergency_they_nwill_receive_real_time_alert_with_location">Enter to contacts incase of emergency they\nwill receive real time alert with location</string>
+    <string name="add_another_account">+ Add another account</string>
+    <string name="fake_call">Fake Call</string>
+    <string name="setup_a_fake_call">Setup a fake call</string>
+    <string name="set_time">Set Time</string>
+    <string name="caller_id_name">Caller ID Name</string>
+    <string name="enter_the_name_of_your_caller">Enter the name of your caller</string>
+    <string name="help_center">Help Center</string>
+    <string name="help_01">Help # 01</string>
+    <string name="fragmentname">fragmentName</string>
+    <string name="home">Home</string>
+    <string name="emergency">Emergency</string>
+    <string name="tips">Tips</string>
+    <string name="profile">Profile</string>
+    <string name="enter_your_phone_number">Enter Your phone Number</string>
+    <string name="enter_name">Enter name</string>
+    <string name="enter_age">Enter Age</string>
+    <string name="my_location">My Location</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="pin_settings">PIN Settings</string>
+    <string name="create_pin_to_cancel_sos_during_false_alarm">Create PIN to cancel SOS during false alarm</string>
+    <string name="safety_acts">Safety Acts</string>
+    <string name="violence_act_2016">Violence Act 2016</string>
+    <string name="criminal_law">Criminal Law</string>
+    <string name="safety_polices">Safety Polices</string>
+    <string name="safety_policy_act_2011">Safety Policy Act 2011</string>
+    <string name="criminal_law_third_amendment_act_2011_for_prevention_of_customary_practices_such_as_giving_a_female_in_marriage_or_otherwise_badla_e_suth_wanni_or_swara_depriving_women_from_inheriting_property_forced_marriages_and_marriage_of_females">(Criminal law (Third Amendment) Act. 2011) for prevention of customary practices such as giving a female in marriage or otherwise badla-e-suth, wanni or swara, depriving women from inheriting property, forced marriages and marriage of females.</string>
+    <string name="manage_these_settings_to_send_a_quick_sos_nwithout_launching_the_app">Manage these settings to send a quick SOS\nwithout launching the app</string>
+    <string name="press_power_button_thrice">Press power button thrice</string>
+    <string name="shake_it_to_wake_it">Shake it to wake it</string>
+    <string name="user_login">User Login</string>
+    <string name="admin_login">Admin Login</string>
+    <string name="police_login">Police Login</string>
+    <string name="view_list">View List</string>
+    <string name="dummy_number">03120089786</string>
+    <string name="sos_settings">SOS Settings</string>
+    <string name="sos">SOS</string>
+    <string name="emergency_contact">Emergency Contact</string>
+    <string name="police_station">Police Station</string>
+    <string name="dummy_address">H3HW+767، Ravi Street, Chaklala Housing Scheme 3, Rawalpindi, Punjab 46000, Pakistan</string>
+    <string name="my_account">My Account</string>
+    <string name="settings">Settings</string>
+    <string name="safety_policies">Safety Policies</string>
+    <string name="safety_laws">Safety Laws</string>
+    <string name="menu">Menu</string>
+
+
+</resources>

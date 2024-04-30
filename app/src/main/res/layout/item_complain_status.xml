@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:layoutDirection="ltr"
+    android:id="@+id/constrain_headers_id"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:padding="@dimen/_5sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="@dimen/_15sdp">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/name_id"
+        android:text="@string/name"
+        android:textColor="@color/black"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toStartOf="@+id/email_id"
+        android:textSize="@dimen/_11sdp" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/name_id"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/email_id"
+        android:text="@string/email"
+        app:layout_constraintEnd_toStartOf="@+id/address_id"
+        android:textColor="@color/black"
+        android:textStyle="normal"
+        android:maxLines="1"
+        android:textSize="@dimen/_11sdp" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/email_id"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/address_id"
+        android:maxLines="1"
+        android:text="@string/address"
+        app:layout_constraintEnd_toStartOf="@+id/complain_id"
+        android:textColor="@color/black"
+        android:textStyle="normal"
+        android:textSize="@dimen/_11sdp" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/address_id"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/complain_id"
+        android:maxLines="1"
+        android:text="@string/complaint"
+        app:layout_constraintEnd_toStartOf="@+id/status_id"
+        android:textColor="@color/black"
+        android:textStyle="normal"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:textSize="@dimen/_11sdp" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/complain_id"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/status_id"
+        android:maxLines="1"
+        android:text="@string/status"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/black"
+        android:textStyle="normal"
+        android:textSize="@dimen/_11sdp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

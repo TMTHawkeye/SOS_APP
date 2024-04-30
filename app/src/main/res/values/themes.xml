@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MyFyp" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="colorButtonNormal">@color/one</item>
+        <item name="colorPrimary">@color/one</item>
+        <item name="colorAccent">@color/one</item>
+        <item name="android:navigationBarColor">@color/one</item>
+    </style>
+
+    <style name="Theme.MyFyp" parent="Base.Theme.MyFyp" />
+</resources>
