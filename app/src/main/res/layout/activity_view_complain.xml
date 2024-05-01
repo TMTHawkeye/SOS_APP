@@ -31,7 +31,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/back_btn_img" />
 
-    <EditText
+<!--    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,18 +41,33 @@
         android:layout_marginHorizontal="@dimen/_20sdp"
         android:hint="@string/search"
         android:paddingStart="@dimen/_10sdp"
-        android:id="@+id/search_id"/>
+        android:id="@+id/search_id"/>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:id="@+id/recycler_complains"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_id"
+        app:layout_constraintTop_toBottomOf="@+id/heading_tv"
         android:padding="@dimen/_20sdp"/>
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_result_found"
+        android:textSize="@dimen/_16sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/no_data_id"
+        android:textColor="@color/one"
+        android:textStyle="bold"
+        android:visibility="gone"/>
 
 
 

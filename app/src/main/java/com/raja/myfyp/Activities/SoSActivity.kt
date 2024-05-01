@@ -24,7 +24,6 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.airbnb.lottie.LottieDrawable
@@ -34,8 +33,14 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.raja.myfyp.Interfaces.PinConfirmationCallback
 import com.raja.myfyp.ModelClasses.Contact
+import com.raja.myfyp.ModelClasses.PoliceDataClass
 import com.raja.myfyp.R
 import com.raja.myfyp.databinding.ActivitySoSactivityBinding
 import com.raja.myfyp.databinding.CustomDialogSosAlertBinding
@@ -44,7 +49,6 @@ import io.paperdb.Paper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.net.URLEncoder
 import kotlin.coroutines.CoroutineContext
@@ -52,6 +56,8 @@ import kotlin.coroutines.CoroutineContext
 class SoSActivity : BaseActivity(), CoroutineScope, PinConfirmationCallback {
     lateinit var sosbinding: ActivitySoSactivityBinding
     private var coroutineJob: Job = Job()
+    private lateinit var database: DatabaseReference
+
     val coroutineScope = CoroutineScope(Dispatchers.Main)
     private val MY_PERMISSIONS_REQUEST_SEND_SMS = 1
     private val MY_PERMISSIONS_REQUEST_LOCATION = 2
@@ -85,13 +91,18 @@ class SoSActivity : BaseActivity(), CoroutineScope, PinConfirmationCallback {
     }
 
     private var countDownTimer: CountDownTimer? = null
-
+    var contacts : ArrayList<Contact>?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sosbinding = ActivitySoSactivityBinding.inflate(layoutInflater)
         val view: View = sosbinding.getRoot()
         setContentView(view)
+        database = FirebaseDatabase.getInstance().reference.child("PoliceData")
+         getAllPolice {
+            contacts = getSelectedContacts(it)
+        }
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         val window = this.window
@@ -201,9 +212,8 @@ class SoSActivity : BaseActivity(), CoroutineScope, PinConfirmationCallback {
 
                     val message =
                         "SOS! I need your help! My current location is: $googleMapsUrl"
-                    val contacts = getSelectedContacts()
                     contacts?.let {
-                        for (contact in contacts) {
+                        for (contact in it) {
                             SmsManager.getDefault()
                                 .sendTextMessage(contact.phone, null, message, null, null)
                         }
@@ -222,13 +232,13 @@ class SoSActivity : BaseActivity(), CoroutineScope, PinConfirmationCallback {
             }
     }
 
-    private fun getSelectedContacts(): ArrayList<Contact>? {
+    private fun getSelectedContacts(policeDataClasses: ArrayList<PoliceDataClass>?): ArrayList<Contact>? {
+        var policeContacts = getAllPoliceContacts(policeDataClasses)
+
         var listOfCOntacts = Paper.book().read("EMERGENCY_CONTACTS${FirebaseAuth.getInstance().currentUser?.uid}", ArrayList<Contact>())
         Log.d("TAG", "getSelectedContacts: $listOfCOntacts")
+        policeContacts?.let { listOfCOntacts?.addAll(it) }
         return listOfCOntacts
-
-        // Implement your logic to retrieve selected contacts from your list
-//        return arrayOf("+923345515964")
     }
 
     override fun onRequestPermissionsResult(
@@ -359,6 +369,39 @@ class SoSActivity : BaseActivity(), CoroutineScope, PinConfirmationCallback {
             finish()
         }
 
+    }
+
+    fun getAllPoliceContacts(policeDataClasses: ArrayList<PoliceDataClass>?): ArrayList<Contact>?{
+        val allContactsPolice = ArrayList<Contact>()
+//        getAllPolice { policeList ->
+//            policeList?.let { list ->
+//
+//            }
+//        }
+        policeDataClasses?.let {
+            for (police in it) {
+                allContactsPolice.add(Contact(police.name, police.phone))
+            }
+        }
+        return allContactsPolice
+    }
+
+
+    fun getAllPolice(callback: (ArrayList<PoliceDataClass>?) -> Unit) {
+        database.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val policeList = ArrayList<PoliceDataClass>()
+                for (policeSnapshot in snapshot.children) {
+                    val police = policeSnapshot.getValue(PoliceDataClass::class.java)
+                    police?.let { policeList.add(it) }
+                }
+                callback(policeList)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                callback(null)
+            }
+        })
     }
 
 }

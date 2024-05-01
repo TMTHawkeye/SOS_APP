@@ -10,7 +10,7 @@ import com.raja.myfyp.databinding.ItemEditPoliceDetailsBinding
 
 class PoliceListAdapter(
     val ctxt: Context,
-    val policeList: List<PoliceDataClass>?
+    var policeList: ArrayList<PoliceDataClass>?
 ) : RecyclerView.Adapter<PoliceListAdapter.viewHolder>() {
     lateinit var binding : ItemEditPoliceDetailsBinding
     lateinit var editPoliceListner : EditPoliceListner
@@ -42,7 +42,11 @@ class PoliceListAdapter(
         }
 
         holder.binding.deleteBtn.setOnClickListener {
-            editPoliceListner.deletePoliceItem(policeItem?.id)
+            editPoliceListner.deletePoliceItem(policeItem?.id,position)
+        }
+
+        holder.binding.updateBtn.setOnClickListener {
+            editPoliceListner.editPolice(policeItem,position)
         }
 
      }

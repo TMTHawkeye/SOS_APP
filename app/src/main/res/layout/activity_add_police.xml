@@ -51,6 +51,7 @@
             android:paddingVertical="@dimen/_10sdp">
             <EditText
                 android:id="@+id/name_ET"
+                android:inputType="textPersonName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -83,6 +84,7 @@
             android:paddingVertical="@dimen/_10sdp">
             <EditText
                 android:id="@+id/password_ET"
+                android:inputType="numberPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -115,6 +117,7 @@
             android:paddingVertical="@dimen/_10sdp">
             <EditText
                 android:id="@+id/address_ET"
+                android:inputType="textPostalAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -147,6 +150,7 @@
             android:paddingVertical="@dimen/_10sdp">
             <EditText
                 android:id="@+id/email_ET"
+                android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -179,6 +183,7 @@
             android:paddingVertical="@dimen/_10sdp">
             <EditText
                 android:id="@+id/rank_ET"
+                android:inputType="textPersonName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -186,6 +191,39 @@
                 android:gravity="start"
                 android:layout_marginHorizontal="@dimen/_10sdp"
                 android:hint="@string/enter_rank_hint"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="0dp"
+        android:layout_marginHorizontal="@dimen/_30sdp"
+        android:layout_height="wrap_content"
+        app:strokeWidth="@dimen/_1sdp"
+        app:strokeColor="@color/grey"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_rank"
+        app:cardCornerRadius="@dimen/_8sdp"
+        android:id="@+id/card_phone">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingVertical="@dimen/_10sdp">
+            <EditText
+                android:id="@+id/phone_ET"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:maxLines="1"
+                android:gravity="start"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:hint="@string/enter_phone_hint"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

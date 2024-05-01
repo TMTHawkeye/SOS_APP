@@ -13,19 +13,47 @@ import com.raja.myfyp.databinding.ActivityPoliceDashboardBinding
 import io.paperdb.Paper
 
 class PoliceDashboardActivity : AppCompatActivity() {
-    lateinit var binding : ActivityPoliceDashboardBinding
+    lateinit var binding: ActivityPoliceDashboardBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPoliceDashboardBinding.inflate(layoutInflater)
-         setContentView(binding.root)
-        Paper.book().write("USERTYPE" , "POLICE")
+        setContentView(binding.root)
+        Paper.book().write("USERTYPE", "POLICE")
+
+        binding.viewComplainTv.setOnClickListener {
+            startActivity(
+                Intent(
+                    this@PoliceDashboardActivity,
+                    ViewComplainStatusActivity::class.java
+                ).putExtra(
+                    "intentFrom",
+                    "Police"
+                )
+            )
+        }
+
+        binding.menuId.setOnClickListener {
+            Paper.book().write("USERTYPE", "")
+            startActivity(
+                Intent(
+                    this@PoliceDashboardActivity,
+                    UserCategoryActivity::class.java
+                )
+            )
+            finish()
+        }
 
 
-         val callback = object : OnBackPressedCallback(true) {
+        val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                Paper.book().write("USERTYPE" , "")
+                Paper.book().write("USERTYPE", "")
 //                clearCredentials(this@PoliceDashboardActivity)
-                startActivity(Intent(this@PoliceDashboardActivity,UserCategoryActivity::class.java))
+                startActivity(
+                    Intent(
+                        this@PoliceDashboardActivity,
+                        UserCategoryActivity::class.java
+                    )
+                )
                 finish()
             }
         }

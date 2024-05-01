@@ -147,6 +147,15 @@
     <string name="enter_complain_here">Enter Complain here...</string>
     <string name="deleted_successfully">Deleted Successfully!</string>
     <string name="unableToDelete">Unable To Delete!</string>
+    <string name="updated_successfully">Updated successfully!</string>
+    <string name="something_went_wrong">Something went wrong!</string>
+    <string name="enter_phone_hint">Enter Phone</string>
 
+
+    <string-array name="spinner_items">
+        <item>Under Process</item>
+        <item>Completed</item>
+
+    </string-array>
 
 </resources>

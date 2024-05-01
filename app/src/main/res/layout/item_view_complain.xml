@@ -9,7 +9,7 @@
         android:id="@+id/card_complain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_2sdp"
         android:backgroundTint="@color/white"
@@ -38,8 +38,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/name_id"
                 android:layout_width="@dimen/_160sdp"
                 android:gravity="start"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:layout_constraintStart_toEndOf="@+id/name_title_id"
                 android:paddingStart="@dimen/_10sdp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
@@ -61,8 +65,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/name_title_id" />
 
             <TextView
+                android:id="@+id/email_id"
                 android:layout_width="@dimen/_160sdp"
+                app:layout_constraintStart_toEndOf="@id/email_title_id"
                 android:gravity="start"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:paddingStart="@dimen/_10sdp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
@@ -84,8 +92,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/email_title_id" />
 
             <TextView
+                android:id="@+id/address_id"
                 android:layout_width="@dimen/_160sdp"
                 android:gravity="start"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:layout_constraintStart_toEndOf="@+id/address_title_id"
                 android:paddingStart="@dimen/_10sdp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
@@ -107,8 +119,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/address_title_id" />
 
             <TextView
+                android:id="@+id/date_id"
                 android:layout_width="@dimen/_160sdp"
                 android:gravity="start"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:layout_constraintStart_toEndOf="@+id/date_title_id"
                 android:paddingStart="@dimen/_10sdp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
@@ -130,16 +146,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/date_title_id" />
 
             <TextView
-                android:id="@+id/rank_ET"
-                android:layout_width="@dimen/_160sdp"
+                android:id="@+id/complain_ET"
+                android:layout_width="0dp"
                 android:gravity="start"
+                app:layout_constraintStart_toEndOf="@+id/complaint_title_id"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:paddingStart="@dimen/_10sdp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:text="xyz"
-                app:layout_constraintBottom_toBottomOf="@+id/complaint_title_id"
-                app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintTop_toTopOf="@+id/complaint_title_id" />
+                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date_id"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

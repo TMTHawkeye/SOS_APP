@@ -3,15 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
+    android:background="@color/five"
     android:layoutDirection="ltr"
     android:id="@+id/constrain_headers_id"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     android:padding="@dimen/_5sdp"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_margin="@dimen/_15sdp">
+    xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <TextView
         android:layout_width="0dp"
@@ -19,6 +18,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/name_id"
+        android:maxLines="1"
+        android:ellipsize="end"
         android:text="@string/name"
         android:textColor="@color/black"
         android:textStyle="normal"
@@ -31,12 +32,13 @@
         app:layout_constraintStart_toEndOf="@+id/name_id"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/email_id"
+        android:maxLines="1"
+        android:ellipsize="end"
         android:text="@string/email"
         app:layout_constraintEnd_toStartOf="@+id/address_id"
         android:textColor="@color/black"
         android:textStyle="normal"
-        android:maxLines="1"
-        android:textSize="@dimen/_11sdp" />
+         android:textSize="@dimen/_11sdp" />
 
     <TextView
         android:layout_width="0dp"
@@ -45,6 +47,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/address_id"
         android:maxLines="1"
+        android:ellipsize="end"
         android:text="@string/address"
         app:layout_constraintEnd_toStartOf="@+id/complain_id"
         android:textColor="@color/black"
@@ -58,6 +61,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/complain_id"
         android:maxLines="1"
+        android:ellipsize="end"
         android:text="@string/complaint"
         app:layout_constraintEnd_toStartOf="@+id/status_id"
         android:textColor="@color/black"
@@ -72,6 +76,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/status_id"
         android:maxLines="1"
+        android:ellipsize="end"
         android:text="@string/status"
         app:layout_constraintEnd_toEndOf="parent"
         android:textColor="@color/black"

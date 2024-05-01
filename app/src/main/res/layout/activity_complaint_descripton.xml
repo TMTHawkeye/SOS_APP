@@ -27,6 +27,8 @@
 
         <TextView
             android:id="@+id/name_id"
+            android:textStyle="bold"
+            android:textSize="@dimen/_16sdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_20sdp"
@@ -37,7 +39,8 @@
         <TextView
             android:id="@+id/complain_id"
             android:layout_width="0dp"
-            android:minLines="2"
+            android:minLines="1"
+            android:textSize="@dimen/_14sdp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_20sdp"
@@ -48,6 +51,8 @@
 
         <TextView
             android:id="@+id/email_id"
+            android:textStyle="bold"
+            android:textSize="@dimen/_16sdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
@@ -56,6 +61,8 @@
 
         <TextView
             android:id="@+id/location_id"
+            android:textStyle="bold"
+            android:textSize="@dimen/_16sdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"

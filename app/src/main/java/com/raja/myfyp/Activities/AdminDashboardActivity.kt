@@ -29,12 +29,22 @@ class AdminDashboardActivity : BaseActivity() {
             startActivity(Intent(this@AdminDashboardActivity,EditPoliceActivity::class.java))
         }
 
-        // Create a callback for back button press
-        val callback = object : OnBackPressedCallback(true) {
+        binding.viewComplainTv.setOnClickListener {
+            startActivity(Intent(this@AdminDashboardActivity,ViewComplainStatusActivity::class.java)
+                .putExtra("intentFrom","Admin"))
+        }
+
+
+        binding.menuId.setOnClickListener {
+            Paper.book().write("USERTYPE" , "")
+            startActivity(Intent(this@AdminDashboardActivity,UserCategoryActivity::class.java))
+            finish()
+        }
+
+         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 Paper.book().write("USERTYPE" , "")
-//                clearCredentials(this@AdminDashboardActivity)
-                startActivity(Intent(this@AdminDashboardActivity,UserCategoryActivity::class.java))
+                 startActivity(Intent(this@AdminDashboardActivity,UserCategoryActivity::class.java))
                 finish()
             }
         }

@@ -10,11 +10,10 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     android:padding="@dimen/_5sdp"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_margin="@dimen/_15sdp">
+    xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <TextView
-        android:layout_width="0dp"
+        android:layout_width="@dimen/_40sdp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -28,8 +27,9 @@
         android:textSize="@dimen/_11sdp" />
 
     <TextView
-        android:layout_width="0dp"
+        android:layout_width="@dimen/_40sdp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_5sdp"
         app:layout_constraintStart_toEndOf="@+id/name_id"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,9 +41,7 @@
         android:maxLines="1"
         android:textSize="@dimen/_11sdp" />
 
-
-
-    <TextView
+    <Spinner
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/email_id"
@@ -61,15 +59,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/open_btn"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
          android:layout_height="wrap_content"
         android:background="@drawable/bg_red"
-        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_2sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/complain_id"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-         android:paddingVertical="@dimen/_5sdp">
+         android:paddingVertical="@dimen/_5sdp"
+        android:paddingHorizontal="@dimen/_10sdp">
 
         <TextView
             android:id="@+id/open_tv"

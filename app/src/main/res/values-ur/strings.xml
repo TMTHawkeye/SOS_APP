@@ -132,5 +132,20 @@
     <string name="not_signed_in_yet_signup">ابھی تک سائن ان نہیں کیا؟ سائن اپ کریں</string>
     <string name="enter_admin_pass_to_confirm_hint">تصدیقی پاس ورڈ درج کریں</string>
     <string name="signup">سائن اپ</string>
+    <string name="field_cannot_be_empty">فیلڈ خالی نہیں ہو سکتا!</string>
+    <string name="enter_complain_here">یہاں شکایت درج کریں...</string>
+    <string name="deleted_successfully">کامیابی سے حذف ہوا!</string>
+    <string name="unableToDelete">حذف کرنے میں ناکام!</string>
+    <string name="updated_successfully">کامیابی سے اپ ڈیٹ ہوگیا!</string>
+    <string name="something_went_wrong">کچھ غلط ہوگیا!</string>
+    <string name="password_does_not_match">پاس ورڈ میچ نہیں ہوتا!</string>
+    <string name="enter_phone_hint">فون نمبر درج کریں</string>
+
+    <string-array name="spinner_items">
+        <item>عمل میں</item>
+        <item>مکمل</item>
+    </string-array>
+
+
 
 </resources>
