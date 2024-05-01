@@ -79,7 +79,10 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
+                        android:id="@+id/name_ET"
                         android:layout_width="0dp"
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:hint="@string/enter_name_here"
@@ -102,7 +105,10 @@
                         app:layout_constraintTop_toBottomOf="@+id/name_title_id" />
 
                     <EditText
+                        android:id="@+id/email_ET"
                         android:layout_width="0dp"
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:hint="@string/enter_email_here"
@@ -125,7 +131,10 @@
                         app:layout_constraintTop_toBottomOf="@+id/email_title_id" />
 
                     <EditText
+                        android:id="@+id/address_ET"
                         android:layout_width="0dp"
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:hint="@string/enter_address_here"
@@ -148,14 +157,14 @@
                         app:layout_constraintTop_toBottomOf="@+id/address_title_id" />
 
                     <EditText
+                        android:id="@+id/complain_ET"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
-                        android:hint="@string/enter_address_here"
-                        app:layout_constraintBottom_toBottomOf="@+id/complaint_title_id"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:hint="@string/enter_complain_here"
+                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/complaint_title_id"
-                        app:layout_constraintTop_toTopOf="@+id/complaint_title_id" />
+                        app:layout_constraintTop_toBottomOf="@+id/address_ET"/>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

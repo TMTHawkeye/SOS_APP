@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.firebase.auth.FirebaseAuth
 import com.raja.myfyp.Activities.ChangePinActivity
 import com.raja.myfyp.Activities.MainActivity
 import com.raja.myfyp.Activities.ManageProfileActivity
@@ -14,7 +15,7 @@ import com.raja.myfyp.Activities.PinSettingsActivity
 import com.raja.myfyp.Activities.SOSSettingActivity
 import com.raja.myfyp.Interfaces.ExitListner
 import com.raja.myfyp.ModelClasses.UserData
-import com.raja.myfyp.clearCredentials
+//import com.raja.myfyp.clearCredentials
 import com.raja.myfyp.databinding.FragmentExitBottomSheetBinding
 import io.paperdb.Paper
 
@@ -28,14 +29,14 @@ class ExitBottomSheet(val ctxt: MainActivity) : BottomSheetDialogFragment() {
     ): View? {
         binding = FragmentExitBottomSheetBinding.inflate(layoutInflater)
 
-        val userData = Paper.book().read<UserData>("USER_DATA")
+        val userData = Paper.book().read<UserData>("USER_DATA${FirebaseAuth.getInstance().currentUser?.uid}")
         userData?.let {
             binding.userNameId.text=it.name
             binding.phoneId.text=it.phone
         }
 
         binding.logoutId.setOnClickListener {
-            clearCredentials(ctxt)
+//            clearCredentials(ctxt)
             exitListener.exitBottomSheetCallback(true)
             dismiss()
         }

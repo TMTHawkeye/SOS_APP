@@ -43,6 +43,17 @@
         android:paddingStart="@dimen/_10sdp"
         android:id="@+id/search_id"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/recycler_police"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_id"
+        android:padding="@dimen/_20sdp"/>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

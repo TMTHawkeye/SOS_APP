@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.raja.myfyp.ModelClasses.UserData
 import com.raja.myfyp.R
 import com.raja.myfyp.databinding.ActivityManageProfileBinding
@@ -43,7 +44,7 @@ class ManageProfileActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
 
-        userData = Paper.book().read("USER_DATA", null)
+        userData = Paper.book().read("USER_DATA${FirebaseAuth.getInstance().currentUser?.uid}", null)
         userData?.let {
             profileBinding.editTextPhone.setText(it.phone)
             profileBinding.editTextname.setText(it.name)
@@ -62,7 +63,7 @@ class ManageProfileActivity : BaseActivity() {
             email = profileBinding.editTextemail.text.toString()
         }
         userData?.let {
-            Paper.book().write("USER_DATA", it)
+            Paper.book().write("USER_DATA${FirebaseAuth.getInstance().currentUser?.uid}", it)
         }
     }
 }

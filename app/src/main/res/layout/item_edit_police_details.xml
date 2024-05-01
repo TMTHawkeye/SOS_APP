@@ -9,7 +9,7 @@
         android:id="@+id/card_complain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_2sdp"
         android:backgroundTint="@color/white"
@@ -38,11 +38,14 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/name_id"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:gravity="center"
                 android:text="xyz"
+                android:maxLines="1"
+                android:ellipsize="end"
                 app:layout_constraintBottom_toBottomOf="@+id/name_title_id"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/name_title_id"
@@ -61,11 +64,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/name_title_id" />
 
             <TextView
+                android:id="@+id/email_id"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:gravity="center"
                 android:text="xyz"
+                android:maxLines="1"
+                android:ellipsize="end"
                 app:layout_constraintBottom_toBottomOf="@+id/email_title_id"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/email_title_id"
@@ -84,11 +90,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/email_title_id" />
 
             <TextView
+                android:id="@+id/address_id"
+
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:gravity="center"
                 android:text="xyz"
+                android:maxLines="1"
+                android:ellipsize="end"
                 app:layout_constraintBottom_toBottomOf="@+id/address_title_id"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/address_title_id"
@@ -112,6 +122,8 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 android:gravity="center"
                 android:text="xyz"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:id="@+id/password_ET"
                 app:layout_constraintBottom_toBottomOf="@+id/password_title_id"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -136,6 +148,8 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 android:gravity="center"
                 android:text="xyz"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:id="@+id/rank_ET"
                 app:layout_constraintBottom_toBottomOf="@+id/rank_title_id"
                 app:layout_constraintEnd_toEndOf="parent"

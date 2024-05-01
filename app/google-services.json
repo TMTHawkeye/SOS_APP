@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "309215066909",
+    "firebase_url": "https://pptviewerapp-default-rtdb.firebaseio.com",
     "project_id": "pptviewerapp",
     "storage_bucket": "pptviewerapp.appspot.com"
   },

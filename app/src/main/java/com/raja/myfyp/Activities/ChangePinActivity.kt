@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.raja.myfyp.ModelClasses.UserData
 import com.raja.myfyp.R
 import com.raja.myfyp.databinding.ActivityChangePinBinding
@@ -21,7 +22,7 @@ class ChangePinActivity : BaseActivity() {
         setContentView(binding.root)
 
          binding.updateBtn.setOnClickListener {
-             val presentPin = Paper.book().read<String>("USER_PIN")
+             val presentPin = Paper.book().read<String>("USER_PIN${FirebaseAuth.getInstance().currentUser?.uid}")
               val newPin = binding.editTextnewPin.text.toString()
              val confirmPin = binding.editTextconfirm.text.toString()
 
@@ -33,7 +34,7 @@ class ChangePinActivity : BaseActivity() {
                  } else {
                      if(presentPin.equals(binding.editTextpresentPin.text.toString())) {
                          if (newPin == confirmPin) {
-                             Paper.book().write("USER_PIN", newPin)
+                             Paper.book().write("USER_PIN${FirebaseAuth.getInstance().currentUser?.uid}", newPin)
                              Toast.makeText(
                                  this@ChangePinActivity,
                                  "PIN updated successfully!",

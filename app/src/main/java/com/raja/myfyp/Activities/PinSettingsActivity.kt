@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.raja.myfyp.Interfaces.PinConfirmationCallback
 import com.raja.myfyp.R
 import com.raja.myfyp.databinding.ActivityPinSettingsBinding
@@ -22,7 +23,7 @@ class PinSettingsActivity : BaseActivity() {
 
         binding.createBtn.setOnClickListener {
             if(binding.pinId.text.isNotBlank()) {
-                Paper.book().write("USER_PIN", binding.pinId.text.toString())
+                Paper.book().write("USER_PIN${FirebaseAuth.getInstance().currentUser?.uid}", binding.pinId.text.toString())
                 startActivity(Intent(this@PinSettingsActivity,AppPermissionActivity::class.java))
             }
             else{
@@ -41,6 +42,14 @@ class PinSettingsActivity : BaseActivity() {
 
 
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val userPin = Paper.book().read<String>("USER_PIN${FirebaseAuth.getInstance().currentUser?.uid}")
+        if(userPin!=null){
+            startActivity(Intent(this@PinSettingsActivity,AppPermissionActivity::class.java))
+        }
     }
 
 

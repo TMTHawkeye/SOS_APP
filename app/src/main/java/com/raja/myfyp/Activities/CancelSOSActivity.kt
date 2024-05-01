@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.raja.myfyp.Interfaces.PinConfirmationCallback
 import com.raja.myfyp.R
 import com.raja.myfyp.databinding.ActivityCancelSosactivityBinding
@@ -20,7 +21,7 @@ class CancelSOSActivity : BaseActivity() {
         binding = ActivityCancelSosactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val pin=Paper.book().read<String>("USER_PIN","")
+        val pin=Paper.book().read<String>("USER_PIN${FirebaseAuth.getInstance().currentUser?.uid}","")
 
         binding.submitBtn.setOnClickListener {
             if(binding.pinId.text.toString().equals(pin)){

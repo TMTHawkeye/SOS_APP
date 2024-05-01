@@ -82,7 +82,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/bg_number"
             android:ems="11"
-            android:enabled="false"
+            android:enabled="true"
             android:gravity="start|center"
             android:paddingStart="@dimen/_10sdp"
             android:hint="@string/enter_otp"

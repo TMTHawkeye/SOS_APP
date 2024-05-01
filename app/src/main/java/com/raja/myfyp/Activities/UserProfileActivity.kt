@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.raja.myfyp.ModelClasses.UserData
 import com.raja.myfyp.R
 import com.raja.myfyp.databinding.ActivityUserProfileBinding
@@ -38,12 +39,18 @@ class UserProfileActivity : BaseActivity() {
                 finish()
             }
         })
+    }
 
-
+    override fun onStart() {
+        super.onStart()
+        val userData = Paper.book().read<UserData>("USER_DATA${FirebaseAuth.getInstance().currentUser?.uid}")
+        if(userData!=null){
+            startActivity(Intent(this@UserProfileActivity,EmergencyContactsActivity::class.java))
+            finish()
+        }
     }
 
     fun saveDataToPaperDB(userData: UserData) {
-        Paper.book().write("USER_DATA", userData)
-
+        Paper.book().write("USER_DATA${FirebaseAuth.getInstance().currentUser?.uid}", userData)
     }
 }

@@ -33,6 +33,7 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import com.google.firebase.auth.FirebaseAuth
 import com.raja.myfyp.Interfaces.PinConfirmationCallback
 import com.raja.myfyp.ModelClasses.Contact
 import com.raja.myfyp.R
@@ -222,7 +223,7 @@ class SoSActivity : BaseActivity(), CoroutineScope, PinConfirmationCallback {
     }
 
     private fun getSelectedContacts(): ArrayList<Contact>? {
-        var listOfCOntacts = Paper.book().read("EMERGENCY_CONTACTS", ArrayList<Contact>())
+        var listOfCOntacts = Paper.book().read("EMERGENCY_CONTACTS${FirebaseAuth.getInstance().currentUser?.uid}", ArrayList<Contact>())
         Log.d("TAG", "getSelectedContacts: $listOfCOntacts")
         return listOfCOntacts
 

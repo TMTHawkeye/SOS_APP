@@ -33,7 +33,7 @@
     <string name="view_complain">شکایت دیکھیں</string>
     <string name="search">تلاش کریں</string>
     <string name="location">مقام</string>
-    <string name="enter_admin_name_hint">ایڈمن کا نام درج کریں</string>
+    <string name="enter_admin_name_hint">ایڈمن ای میل درج کریں</string>
     <string name="enter_admin_pass_hint">ایڈمن کا پاس ورڈ درج کریں</string>
     <string name="sheguard">شی گارڈ</string>
     <string name="registerPolice">پولیس رجسٹر کریں</string>
@@ -129,5 +129,8 @@
     <string name="safety_policies">حفاظتی پالیسیاں</string>
     <string name="safety_laws">حفاظتی قوانین</string>
     <string name="menu">مینو</string>
+    <string name="not_signed_in_yet_signup">ابھی تک سائن ان نہیں کیا؟ سائن اپ کریں</string>
+    <string name="enter_admin_pass_to_confirm_hint">تصدیقی پاس ورڈ درج کریں</string>
+    <string name="signup">سائن اپ</string>
 
 </resources>

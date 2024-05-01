@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import com.raja.myfyp.Adapters.AddContactAdapter
 import com.raja.myfyp.ModelClasses.Contact
 import com.raja.myfyp.databinding.ActivityEmergencyContactsBinding
@@ -39,7 +40,7 @@ class EmergencyContactsActivity : BaseActivity() {
         binding.submitBtn.setOnClickListener {
             val invalidPosition = validateContacts()
             if (invalidPosition == -1) {
-                Paper.book().write("EMERGENCY_CONTACTS",adapter.getContacts())
+                Paper.book().write("EMERGENCY_CONTACTS${FirebaseAuth.getInstance().currentUser?.uid}",adapter.getContacts())
                 Toast.makeText(this@EmergencyContactsActivity, "Contacts have been added!", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this@EmergencyContactsActivity,SOSSettingActivity::class.java))
                 finish()
@@ -75,6 +76,15 @@ class EmergencyContactsActivity : BaseActivity() {
             }
         }
         return -1
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val contactsList = Paper.book().read<MutableList<Contact>>("EMERGENCY_CONTACTS${FirebaseAuth.getInstance().currentUser?.uid}")
+        if(contactsList!=null){
+            startActivity(Intent(this@EmergencyContactsActivity,SOSSettingActivity::class.java))
+            finish()
+        }
     }
 
 

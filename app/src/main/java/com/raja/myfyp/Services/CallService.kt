@@ -5,12 +5,14 @@ import android.app.NotificationManager
 import android.app.Service
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Build
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import com.batterycharging.animation.chargingeffect.BroadCastReceivers.BootReceiver
 import com.raja.myfyp.Activities.CallActivity
 import com.raja.myfyp.R
 import io.paperdb.Paper
@@ -19,42 +21,37 @@ import java.util.Timer
 import java.util.TimerTask
 import java.util.concurrent.TimeUnit
 
-
 class CallService : Service() {
-    private val handler = Handler()
+    private var batteryBoardcastReciver: BootReceiver? = null
+
+    private val handler = Handler(Looper.getMainLooper())
     private val CHANNEL_ID = "SOS Application"
     private val FOREGROUND_SERVICE_ID = 101
 
-
-
     private val checkTimeRunnable = object : Runnable {
         override fun run() {
-            val currentTimeMinutes =
-                (Calendar.getInstance().get(Calendar.HOUR_OF_DAY) * 60) + Calendar.getInstance()
-                    .get(Calendar.MINUTE)
-            val fakeCallTime = Paper.book().read<Int>("fakeCallTime", -1)
-            Log.d("TAG", "run: $fakeCallTime")
+            val currentTime = Calendar.getInstance()
+            val currentHour = currentTime.get(Calendar.HOUR_OF_DAY)
+            val currentMinute = currentTime.get(Calendar.MINUTE)
+            val currentTimeString = String.format("%02d:%02d:00", currentHour, currentMinute)
+            val currentTimeMinutes = convertTimeStringToMinutes(currentTimeString)
 
-            if (fakeCallTime != -1 && currentTimeMinutes == fakeCallTime) {
-                // The fake call time has approached, start the CallActivity
-                val intent = Intent(this@CallService, CallActivity::class.java).apply {
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            val fakeCallTime = Paper.book().read<String>("fakeCallTime", "")
+
+            if (fakeCallTime != null) {
+                if (fakeCallTime.isNotEmpty() && currentTimeString == fakeCallTime) {
+                     val intent = Intent(this@CallService, CallActivity::class.java).apply {
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    }
+                    startActivity(intent)
                 }
-                startActivity(intent)
             }
 
             // Check again in 1 minute
-            handler.postDelayed(this, TimeUnit.MINUTES.toMillis(1))
+            handler.postDelayed(this, 1000)
         }
     }
 
-    private fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(CHANNEL_ID, "Battery Charging Animation is Started", NotificationManager.IMPORTANCE_DEFAULT)
-            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
-        }
-    }
     override fun onCreate() {
         super.onCreate()
         createNotificationChannel()
@@ -66,7 +63,10 @@ class CallService : Service() {
             .build()
 
         startForeground(FOREGROUND_SERVICE_ID, notification)
-
+        batteryBoardcastReciver = BootReceiver()
+        val filter = IntentFilter()
+        filter.addAction(Intent.ACTION_TIME_TICK)
+        registerReceiver(batteryBoardcastReciver, filter)
 
         val timer = Timer()
         val handler = Handler(Looper.getMainLooper())
@@ -77,25 +77,40 @@ class CallService : Service() {
             }
         }
         timer.schedule(doAsynchronousTask, 5000L, 5000L)
+
+//        handler.post(checkTimeRunnable)
+    }
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                CHANNEL_ID,
+                "Battery Charging Animation is Started",
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+            val notificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
     }
 
     override fun onBind(intent: Intent?): IBinder? {
         return null
     }
 
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        handler.post(checkTimeRunnable)
-        return START_STICKY
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         // Remove the callback to avoid memory leaks
-        handler.removeCallbacks(checkTimeRunnable)
+//        handler.removeCallbacks(checkTimeRunnable)
 
         stopForeground(true)
-//        stopSelf()
+    }
 
+    private fun convertTimeStringToMinutes(timeString: String): Int {
+        val timeParts = timeString.split(":")
+        val hours = timeParts[0].toInt()
+        val minutes = timeParts[1].toInt()
 
+        return (hours * 60) + minutes
     }
 }

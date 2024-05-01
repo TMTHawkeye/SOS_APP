@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
 import com.raja.myfyp.Activities.MainActivity
 import com.raja.myfyp.ModelClasses.UserData
 import com.raja.myfyp.R
@@ -36,7 +37,7 @@ class ProfileFragment : Fragment() {
         val ctxt = (requireContext() as MainActivity)
         ctxt.setTitleFrgment(requireContext().getString(R.string.manage_your_profile))
 
-        userData = Paper.book().read("USER_DATA",null)
+        userData = Paper.book().read("USER_DATA${FirebaseAuth.getInstance().currentUser?.uid}",null)
         userData?.let {
             profileBinding.editTextPhone.setText(it.phone)
             profileBinding.nameEt.setText(it.name)
@@ -108,7 +109,7 @@ class ProfileFragment : Fragment() {
 
     private fun saveUserData(userData: UserData?) {
         userData?.let {
-            Paper.book().write("USER_DATA", it)
+            Paper.book().write("USER_DATA${FirebaseAuth.getInstance().currentUser?.uid}", it)
         }
     }
 

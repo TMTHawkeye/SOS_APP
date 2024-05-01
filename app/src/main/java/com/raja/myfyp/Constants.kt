@@ -20,7 +20,8 @@ fun isLocationEnabled(context: Context): Boolean {
             locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
 }
 
+/*
 fun clearCredentials(ctxt:Context) {
     Paper.book().destroy()
     Paper.init(ctxt)
-}
+}*/

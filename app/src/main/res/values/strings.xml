@@ -44,7 +44,7 @@
     <string name="view_complain">View Complain</string>
     <string name="search">Search</string>
     <string name="location">Location</string>
-    <string name="enter_admin_name_hint">Enter Admin Name</string>
+    <string name="enter_admin_name_hint">Enter Admin Email</string>
     <string name="enter_admin_pass_hint">Enter Admin Password</string>
     <string name="sheguard">SHEGUARD</string>
     <string name="registerPolice">Register Police</string>
@@ -139,6 +139,14 @@
     <string name="safety_policies">Safety Policies</string>
     <string name="safety_laws">Safety Laws</string>
     <string name="menu">Menu</string>
+    <string name="not_signed_in_yet_signup">Not signed-in yet? Signup</string>
+    <string name="enter_admin_pass_to_confirm_hint">Enter confirm Password</string>
+    <string name="signup">Sign Up</string>
+    <string name="password_does_not_match">Password does not match!</string>
+    <string name="field_cannot_be_empty">Field cannot be empty!</string>
+    <string name="enter_complain_here">Enter Complain here...</string>
+    <string name="deleted_successfully">Deleted Successfully!</string>
+    <string name="unableToDelete">Unable To Delete!</string>
 
 
 </resources>

@@ -7,20 +7,22 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.raja.myfyp.R
 import com.raja.myfyp.databinding.ActivitySossettingBinding
 import io.paperdb.Paper
 
 class SOSSettingActivity : BaseActivity() {
     lateinit var binding: ActivitySossettingBinding
+    var intentFrom : String ?=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySossettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val powerState = Paper.book().read<Boolean>("POWER_SERVICE", false)
-        val shakeState = Paper.book().read<Boolean>("SHAKE_SERVICE", false)
+        val powerState = Paper.book().read<Boolean>("POWER_SERVICE${FirebaseAuth.getInstance().currentUser?.uid}", false)
+        val shakeState = Paper.book().read<Boolean>("SHAKE_SERVICE${FirebaseAuth.getInstance().currentUser?.uid}", false)
 
-        val intentFrom = intent?.getStringExtra("intentFrom")
+        intentFrom = intent?.getStringExtra("intentFrom")
 
         binding.radioPowerBtn.isChecked = powerState ?: false
         binding.radioShakeBtn.isChecked = shakeState ?: false
@@ -55,15 +57,15 @@ class SOSSettingActivity : BaseActivity() {
                 R.id.radio_power_btn -> {
                     // If power button is checked, uncheck shake button
                     binding.radioShakeBtn.isChecked = false
-                    Paper.book().write("SHAKE_SERVICE",false)
-                    Paper.book().write("POWER_SERVICE",true)
+                    Paper.book().write("SHAKE_SERVICE${FirebaseAuth.getInstance().currentUser?.uid}",false)
+                    Paper.book().write("POWER_SERVICE${FirebaseAuth.getInstance().currentUser?.uid}",true)
                 }
 
                 R.id.radio_shake_btn -> {
                     // If shake button is checked, uncheck power button
                     binding.radioPowerBtn.isChecked = false
-                    Paper.book().write("POWER_SERVICE",false)
-                    Paper.book().write("SHAKE_SERVICE",true)
+                    Paper.book().write("POWER_SERVICE${FirebaseAuth.getInstance().currentUser?.uid}",false)
+                    Paper.book().write("SHAKE_SERVICE${FirebaseAuth.getInstance().currentUser?.uid}",true)
 
                 }
             }
@@ -71,6 +73,7 @@ class SOSSettingActivity : BaseActivity() {
 
 
         binding.updateBtn.setOnClickListener {
+            Paper.book().write<Boolean>("SOSSettingsEnabled${FirebaseAuth.getInstance().currentUser?.uid}",true)
 //            Paper.book().write("POWER_SERVICE", binding.radioPowerBtn.isChecked)
 //
 //            Paper.book().write("SHAKE_SERVICE", binding.radioShakeBtn.isChecked)
@@ -89,7 +92,18 @@ class SOSSettingActivity : BaseActivity() {
                 finish()
             }
         })
+    }
 
-
+    override fun onStart() {
+        super.onStart()
+        if(intentFrom!="fromMain") {
+            val sosSettingsStatus = Paper.book().read<Boolean>(
+                "SOSSettingsEnabled${FirebaseAuth.getInstance().currentUser?.uid}",
+                false
+            ) ?: false
+            if (sosSettingsStatus) {
+                startActivity(Intent(this@SOSSettingActivity, PinSettingsActivity::class.java))
+            }
+        }
     }
 }

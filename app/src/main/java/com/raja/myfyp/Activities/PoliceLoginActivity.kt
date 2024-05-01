@@ -8,18 +8,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.raja.myfyp.R
-import com.raja.myfyp.databinding.ActivityAdminLoginBinding
+import com.raja.myfyp.databinding.ActivityPoliceLoginBinding
 
-class admin_login_activity : BaseActivity() {
-    lateinit var binding: ActivityAdminLoginBinding
+class PoliceLoginActivity : AppCompatActivity() {
+    lateinit var binding : ActivityPoliceLoginBinding
     lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAdminLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding =ActivityPoliceLoginBinding.inflate(layoutInflater)
+         setContentView(binding.root)
+
         firebaseAuth = FirebaseAuth.getInstance()
 
         binding.submitBtn.setOnClickListener {
@@ -31,14 +31,14 @@ class admin_login_activity : BaseActivity() {
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
                             val intent = Intent(
-                                this@admin_login_activity,
-                                AdminDashboardActivity::class.java
+                                this@PoliceLoginActivity,
+                                PoliceDashboardActivity::class.java
                             )
                             startActivity(intent)
 
                         } else {
                             Toast.makeText(
-                                this@admin_login_activity,
+                                this@PoliceLoginActivity,
                                 it.exception.toString(), Toast.LENGTH_SHORT
                             ).show()
                         }
@@ -46,18 +46,10 @@ class admin_login_activity : BaseActivity() {
                     }
             } else {
                 Toast.makeText(
-                    this@admin_login_activity,
+                    this@PoliceLoginActivity,
                     getString(R.string.field_cannot_be_empty), Toast.LENGTH_SHORT
                 ).show()
             }
         }
-
-        binding.signupId.setOnClickListener {
-            startActivity(Intent(this@admin_login_activity,AdminSignupActivity::class.java))
-        }
-
-
     }
-
-
 }

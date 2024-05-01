@@ -13,6 +13,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.raja.myfyp.R
 import com.raja.myfyp.databinding.ActivityAppPermissionBinding
 import io.paperdb.Paper
@@ -25,6 +26,29 @@ class AppPermissionActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAppPermissionBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if(hasOverlayPermission()) {
+            binding.radioOverlayBtn.isChecked = true
+        }
+        if (ContextCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.SEND_SMS
+            ) == PackageManager.PERMISSION_GRANTED
+        ){
+            binding.radioPowerBtn.isChecked=true
+        }
+        if (ContextCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ){
+            binding.radioLocationBtn.isChecked=true
+        }
+
+        if(binding.radioOverlayBtn.isChecked&&binding.radioPowerBtn.isChecked&&binding.radioLocationBtn.isChecked){
+            Paper.book().write("NAV_STATE${FirebaseAuth.getInstance().currentUser?.uid}", false)
+            startActivity(Intent(this@AppPermissionActivity, MainActivity::class.java))
+        }
 
         binding.allowBtn.setOnClickListener {
             val permissionsToRequest = mutableListOf<String>()
@@ -55,7 +79,7 @@ class AppPermissionActivity : BaseActivity() {
             // Request all permissions at once
             if (permissionsToRequest.isEmpty()) {
                 // All permissions are already granted, proceed to main activity
-                Paper.book().write("NAV_STATE", false)
+                Paper.book().write("NAV_STATE${FirebaseAuth.getInstance().currentUser?.uid}", false)
                 startActivity(Intent(this@AppPermissionActivity, MainActivity::class.java))
             } else {
                 // Request permissions
@@ -68,7 +92,7 @@ class AppPermissionActivity : BaseActivity() {
         }
 
         binding.denyBtn.setOnClickListener {
-            Paper.book().write("NAV_STATE", false)
+            Paper.book().write("NAV_STATE${FirebaseAuth.getInstance().currentUser?.uid}", false)
             startActivity(Intent(this@AppPermissionActivity, MainActivity::class.java))
         }
 
@@ -106,14 +130,15 @@ class AppPermissionActivity : BaseActivity() {
 
             if (allPermissionsGranted) {
                 // All permissions are granted, proceed to main activity
-                Paper.book().write("NAV_STATE", false)
+                Paper.book().write("NAV_STATE${FirebaseAuth.getInstance().currentUser?.uid}", false)
                 startActivity(Intent(this@AppPermissionActivity, MainActivity::class.java))
             } else {
                 // Handle case where permissions are denied
 //                Toast.makeText(this, "Permissions denied", Toast.LENGTH_SHORT).show()
-                Paper.book().write("NAV_STATE", false)
+                Paper.book().write("NAV_STATE${FirebaseAuth.getInstance().currentUser?.uid}", false)
                 startActivity(Intent(this@AppPermissionActivity, MainActivity::class.java))
             }
         }
     }
-}
+
+ }

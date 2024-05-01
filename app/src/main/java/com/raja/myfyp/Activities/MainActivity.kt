@@ -2,7 +2,9 @@ package com.raja.myfyp.Activities
 
 import android.content.Intent
 import android.content.res.ColorStateList
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
@@ -27,11 +29,12 @@ import com.raja.myfyp.Fragments.ProfileFragment
 import com.raja.myfyp.Fragments.TipsFragment
 import com.raja.myfyp.Interfaces.ExitListner
 import com.raja.myfyp.ModelClasses.UserData
+import com.raja.myfyp.OVERLAY_PERMISSION_REQUEST_CODE
 import com.raja.myfyp.R
 import com.raja.myfyp.Services.CallService
 import com.raja.myfyp.Services.PowerButtonService
 import com.raja.myfyp.Services.ShakeDetectionService
-import com.raja.myfyp.clearCredentials
+//import com.raja.myfyp.clearCredentials
 import com.raja.myfyp.databinding.ActivityMainBinding
 import io.paperdb.Paper
 
@@ -52,6 +55,7 @@ class MainActivity : BaseActivity(), ExitListner {
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         val view: View = mainBinding!!.getRoot()
         setContentView(view)
+        Paper.book().write("USERTYPE" , "USER")
 
         val window = this.window
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
@@ -144,9 +148,10 @@ class MainActivity : BaseActivity(), ExitListner {
 
         logoutId.setOnClickListener {
             Firebase.auth.signOut()
-            clearCredentials(this@MainActivity)
+            Paper.book().write("USERTYPE","")
+//            clearCredentials(this@MainActivity)
             mainBinding.drawerLayout.closeDrawer(GravityCompat.START)
-            startActivity(Intent(this@MainActivity, OTPActivity::class.java))
+            startActivity(Intent(this@MainActivity, UserCategoryActivity::class.java))
             finish()
         }
 
@@ -266,8 +271,8 @@ class MainActivity : BaseActivity(), ExitListner {
     override fun onResume() {
         super.onResume()
 
-        val powerState = Paper.book().read<Boolean>("POWER_SERVICE", false)
-        val shakeState = Paper.book().read<Boolean>("SHAKE_SERVICE", false)
+        val powerState = Paper.book().read<Boolean>("POWER_SERVICE${FirebaseAuth.getInstance().currentUser?.uid}", false)
+        val shakeState = Paper.book().read<Boolean>("SHAKE_SERVICE${FirebaseAuth.getInstance().currentUser?.uid}", false)
 
         powerState?.let {
             if (it) {
@@ -292,7 +297,7 @@ class MainActivity : BaseActivity(), ExitListner {
                 .findViewById<TextView>(R.id.phoneId)
 
 
-        val userData = Paper.book().read<UserData>("USER_DATA")
+        val userData = Paper.book().read<UserData>("USER_DATA${FirebaseAuth.getInstance().currentUser?.uid}")
         userData?.let {
             nameId.text = it.name
             phoneId.text = it.phone
@@ -308,12 +313,15 @@ class MainActivity : BaseActivity(), ExitListner {
         isBottomSheetVisible = false
         if (isExit) {
             Firebase.auth.signOut()
-            clearCredentials(this@MainActivity)
-            startActivity(Intent(this@MainActivity, OTPActivity::class.java))
+            Paper.book().write("USERTYPE","")
+//            clearCredentials(this@MainActivity)
+            startActivity(Intent(this@MainActivity, UserCategoryActivity::class.java))
             finish()
         }
 
     }
+
+
 
 
 }
