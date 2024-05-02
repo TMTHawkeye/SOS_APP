@@ -16,7 +16,11 @@
 
         <TextView
             android:id="@+id/policeStation_id_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toStartOf="@+id/next_id"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:layout_height="wrap_content"
             android:text="@string/police_station"
             android:textColor="@color/black"

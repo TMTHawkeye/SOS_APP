@@ -73,15 +73,15 @@ class EmergencyFragment : Fragment(), SelectedPoliceStationListner {
           }*/
 
         policeStations = listOf(
-            PoliceModel("CIA Police Station, I-9-3, I-9, Islamabad, ICT, Pakistan", GeoPoint(33.658106396890766, 73.05719768251994), "051-26789766"),
-            PoliceModel("Model Police Station Industrial Area I-9", GeoPoint(33.66081970300909, 73.06395828436715), "051-26789766"),
-            PoliceModel("MX8W+MJJ, Shabbir Sharif Road, G-11 Markaz", GeoPoint(33.66696929489423, 72.99670828621443), "051-26789766"),
+            PoliceModel("CIA Police Station, I-9-3, I-9, Islamabad, ICT, Pakistan", GeoPoint(33.658106396890766, 73.05719768251994), "051-4444791"),
+            PoliceModel("Model Police Station Industrial Area I-9", GeoPoint(33.66081970300909, 73.06395828436715), "051-9258877"),
+            PoliceModel("MX8W+MJJ, Shabbir Sharif Road, G-11 Markaz", GeoPoint(33.66696929489423, 72.99670828621443), "051-9330189"),
             PoliceModel("Police Station Sumbal G-13", GeoPoint(33.65053979057601,  72.96226936533131), "051-26789766"),
-            PoliceModel("Police Station G-9 Markaz", GeoPoint(33.68696598219266,  73.0346298960153), "051-26789766"),
-            PoliceModel("National Police Bureau, G-6/1 Markaz", GeoPoint(33.71415763318075, 73.08598602669889), "051-26789766"),
-            PoliceModel("Secretariat Police Station, Isfahani Rd", GeoPoint(33.72757443413244, 73.10703432300532), "051-26789766"),
-            PoliceModel("Police Station Sabzi Mandi", GeoPoint(33.63798867620023, 73.02551670766017), "051-26789766"),
-            PoliceModel("Police Headquarters ICT Police Lines Islamabad", GeoPoint(33.652986927512714, 73.01128904203735), "051-26789766"),
+            PoliceModel("Police Station G-9 Markaz", GeoPoint(33.68696598219266,  73.0346298960153), "051-9334091"),
+            PoliceModel("National Police Bureau, G-6/1 Markaz", GeoPoint(33.71415763318075, 73.08598602669889), "0519330189"),
+            PoliceModel("Secretariat Police Station, Isfahani Rd", GeoPoint(33.72757443413244, 73.10703432300532), "051-9209132"),
+            PoliceModel("Police Station Sabzi Mandi", GeoPoint(33.63798867620023, 73.02551670766017), "051-9258840"),
+            PoliceModel("Police Headquarters ICT Police Lines Islamabad", GeoPoint(33.652986927512714, 73.01128904203735), "0519330189"),
         )
 
         val overlayItems = mutableListOf<OverlayItem>()
